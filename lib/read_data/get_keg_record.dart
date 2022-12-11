@@ -49,7 +49,8 @@ class GetKegRecord extends StatelessWidget {
           onTap:() {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               //return KegRecordPage(data: data);
-              return KegFormPage();
+              // return KegFormPage();
+              return KegRecordPage(documentId: documentId);
             }
             )
             );

@@ -10,16 +10,18 @@ class KegRecordPage extends StatefulWidget {
 
   //final String record = '';
 
+
   //final VoidCallback showLoginPage;
+  final String documentId;
   const KegRecordPage({
     Key? key,
-    //required this.showLoginPage,
+    required this.documentId,
   }): super(key: key);
 
 
 
   @override
-  State<KegRecordPage> createState() => _KegRecordPageState();
+  State<KegRecordPage> createState() => _KegRecordPageState(documentId: this.documentId);
 
 
 }
@@ -37,6 +39,9 @@ class _KegRecordPageState extends State<KegRecordPage> {
   final _locationController = TextEditingController();
   final _statusController = TextEditingController();
 
+  final String documentId;
+
+  _KegRecordPageState({required this.documentId});
 
   @override
   void initState() {
@@ -141,7 +146,7 @@ class _KegRecordPageState extends State<KegRecordPage> {
   @override
   Widget build(BuildContext context) {
 
-
+    final String documentId;
 
     //get the collection
     CollectionReference kegs = FirebaseFirestore.instance.collection('kegs');
@@ -150,8 +155,8 @@ class _KegRecordPageState extends State<KegRecordPage> {
 
     return Text(kegs.id.toString());*/
 
-/*    return FutureBuilder<DocumentSnapshot>(
-      future: kegs.doc(documentId).get(),
+    return FutureBuilder<DocumentSnapshot>(
+      future: kegs.doc(this.documentId).get(),
       builder: ((context, snapshot) {
         if(snapshot.connectionState == ConnectionState.done){
           Map<String, dynamic> data =
@@ -160,8 +165,228 @@ class _KegRecordPageState extends State<KegRecordPage> {
         }
         return Text('loading...');
       }),
-    );*/
+    );
 
+
+/*    return Scaffold(
+        backgroundColor: Colors.grey[300],
+        appBar: AppBar(
+            title: Text(
+              user.email!,
+              style: TextStyle(fontSize: 16),
+            ),
+            actions: [
+              GestureDetector(
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                },
+                child: Icon(Icons.logout),
+              )
+            ]
+        ),
+        body: SafeArea(
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Put Integrity Brewing icon here.
+                    Image.asset(
+                      //  'assets/images/image001.jpg',
+                      //'assets/images/IntegrityBrewingTransparent_75x75.png',
+                      'assets/images/IB_I_Logo_Black_Vector_10PTC.png',
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                    //https://stackoverflow.com/questions/50198885/how-to-use-an-image-instead-of-an-icon-in-flutter
+
+*//*              Icon(
+                  Icons.android,
+                  size: 100,
+                ),*//*
+
+                    //Hello again!
+                    SizedBox(height: 10),
+                    Text('Keg Tracker',
+                        style: GoogleFonts.bebasNeue(
+                          fontSize: 52,
+                        )
+*//*              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36,
+                  ),*//*
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Create a keg record.',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(height:50),
+
+                    //First Name
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: TextField(
+                              controller: _kegIdController,
+                              autofocus: false,
+                              decoration:InputDecoration(
+                                border: InputBorder.none,
+                                hintText:'Keg Id',
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+
+                    //Last Name
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: TextField(
+                              controller: _contentsController,
+                              autofocus: false,
+                              decoration:InputDecoration(
+                                border: InputBorder.none,
+                                hintText:'Contents',
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+
+
+                    //Age
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: TextField(
+                              controller: _kegTypeController,
+                              autofocus: false,
+                              decoration:InputDecoration(
+                                border: InputBorder.none,
+                                hintText:'Type',
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+
+                    //status textfield
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: TextField(
+                              controller: _statusController,
+                              autofocus: false,
+                              decoration:InputDecoration(
+                                border: InputBorder.none,
+                                hintText:'Status',
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: TextField(
+                              controller: _locationController,
+                              //obscureText: true,
+                              decoration:InputDecoration(
+                                border: InputBorder.none,
+                                hintText:'location',
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: GestureDetector(
+                        onTap: addKeg,
+                        child: Container(
+                            padding: EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                                color: Colors.deepPurple,
+                                borderRadius: BorderRadius.circular(12)
+                            ),
+                            child: Center(
+                              child: Text('Add keg',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  )
+                              ),
+                            )
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 25),
+                  ],
+                ),
+              ),
+            )
+        ));*/
+
+  }
+
+  @override
+  Widget wrappedText(BuildContext context, data) {
+    _kegIdController.text = data['id'];
+    _contentsController.text = data['contents'];
+    _kegTypeController.text = data['type'];
+    _statusController.text = data['status'];
+    _locationController.text = data['location'];
+
+    //_contentsController.value = data['contents'];
 
     return Scaffold(
         backgroundColor: Colors.grey[300],
@@ -353,7 +578,7 @@ class _KegRecordPageState extends State<KegRecordPage> {
                                 borderRadius: BorderRadius.circular(12)
                             ),
                             child: Center(
-                              child: Text('Add keg',
+                              child: Text('Update keg record',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -370,6 +595,8 @@ class _KegRecordPageState extends State<KegRecordPage> {
               ),
             )
         ));
-
   }
+
+
+
 }

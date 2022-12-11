@@ -6,6 +6,7 @@ import 'package:keg_tracker_2/read_data/get_user_name.dart';
 //import 'package:keg_tracker_2/pages/keg_record_page.dart';
 
 import 'keg_form_page.dart';
+import 'keg_record_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -88,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.deepPurple[200],
                 child: Text('sign out'),
               ),*/
-              Expanded(
+    /*          Expanded(
                 child: FutureBuilder(
                   future: getDocIds(),
                   builder: (context, snapshot) {
@@ -107,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 )
-              ),
+              ),*/
 
               SizedBox(height: 10),
 
@@ -141,6 +142,7 @@ class _HomePageState extends State<HomePage> {
                       onTap:() {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
                           return KegFormPage();
+                          // return KegRecordPage(documentId: '',);
                         }));
                       },
                       child: Text('Create keg record',
