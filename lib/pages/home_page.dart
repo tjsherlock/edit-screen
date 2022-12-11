@@ -2,11 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:keg_tracker_2/read_data/get_keg_record.dart';
-import 'package:keg_tracker_2/read_data/get_user_name.dart';
-//import 'package:keg_tracker_2/pages/keg_record_page.dart';
 
 import 'keg_form_page.dart';
-import 'keg_record_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -39,8 +36,6 @@ class _HomePageState extends State<HomePage> {
 
   //get KegIds
   Future getKegIds() async {
-    //await FirebaseFirestore.instance.collection("kegs").orderBy('id', descending: false ).where('age', isGreaterThan: 30).get().then(
-
     await FirebaseFirestore.instance.collection("kegs").orderBy('id', descending: false ).get().then(
           (snapshot) => snapshot.docs.forEach(
             (document) {
@@ -50,7 +45,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
 
 
   @override
@@ -81,35 +75,6 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //Text('Signed in as: ' + user.email!),
-              /*MaterialButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                color: Colors.deepPurple[200],
-                child: Text('sign out'),
-              ),*/
-    /*          Expanded(
-                child: FutureBuilder(
-                  future: getDocIds(),
-                  builder: (context, snapshot) {
-                    return ListView.builder(
-                      itemCount: docIds.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListTile(
-                            //title: Text(docIds[index]),
-                            title: GetUserName(documentId: docIds[index]),
-                            tileColor: Colors.grey[200],
-                          ),
-                        );
-                      },
-                    );
-                  },
-                )
-              ),*/
-
               SizedBox(height: 10),
 
               Expanded(

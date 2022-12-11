@@ -1,4 +1,3 @@
-//import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -88,8 +87,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     // Put Integrity Brewing icon here.
                     Image.asset(
-                      //  'assets/images/image001.jpg',
-                      //'assets/images/IntegrityBrewingTransparent_75x75.png',
                       'assets/images/IB_I_Logo_Black_Vector_10PTC.png',
                       width: 100,
                       height: 100,
@@ -97,21 +94,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     //https://stackoverflow.com/questions/50198885/how-to-use-an-image-instead-of-an-icon-in-flutter
 
-/*              Icon(
-                  Icons.android,
-                  size: 100,
-                ),*/
-
-                    //Hello again!
                     SizedBox(height: 10),
                     Text('Keg Tracker',
                         style: GoogleFonts.bebasNeue(
                           fontSize: 52,
                         )
-/*              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 36,
-                  ),*/
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -195,22 +182,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     SizedBox(height: 10),
 
-
-
-
-
-
-
-
-
                     //email textfield
-
-
-
-
-
-
-
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
                       child: Container(
