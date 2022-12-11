@@ -1,4 +1,3 @@
-//import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -6,21 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class KegFormPage extends StatefulWidget {
 
-  //GetKegRecord({required this.documentId});
-
-  //final String record = '';
-
-  //final VoidCallback showLoginPage;
   const KegFormPage({
     Key? key,
-    //required this.showLoginPage,
   }): super(key: key);
-
-
 
   @override
   State<KegFormPage> createState() => _KegFormPageState();
-
 
 }
 
@@ -42,7 +32,6 @@ class _KegFormPageState extends State<KegFormPage> {
   void initState() {
     // TODO: implement initState
 
-    //_kegIdController.value =
     super.initState();
   }
 
@@ -58,14 +47,6 @@ class _KegFormPageState extends State<KegFormPage> {
   }
 
   Future addKeg() async {
-    //check if use has permission to add a key
-
-    /*  CollectionReference kegs = await FirebaseFirestore.instance.collection('kegs');
-    print(kegs.id);
-
-     */
-
-
 
     final kegRecord = 'keg:' +  _kegIdController.text.trim();
     await FirebaseFirestore.instance.collection('kegs').doc(
@@ -95,32 +76,7 @@ class _KegFormPageState extends State<KegFormPage> {
       // Call setState if needed.
     }
 
-
-/*    await FirebaseFirestore.instance.collection('kegs').doc(
-        kegRecord).set({
-      'id': _kegIdController.text.trim(),
-      'contents': _contentsController.text.trim(),
-      'type': _kegTypeController.text.trim(),
-      'location': _locationController.text.trim(),
-      'status': _statusController.text.trim(),
-    }).then((value) => null);*/
-
-
   }
-
-
-//permissions table?
-//collection: permissions
-//doc = userid
-//map
-// {
-//   create : false,
-//   read : false,
-//   update : false,
-//   delete: false
-// }
-//
-//
 
   Future<bool> permissionCreationConfirmed(User user) async {
 
@@ -134,7 +90,6 @@ class _KegFormPageState extends State<KegFormPage> {
     } else {
       return false;
     }
-    //if(_user.hasPermission('creation') {
 
   }
 
