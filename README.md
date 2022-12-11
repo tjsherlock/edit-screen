@@ -1,4 +1,4 @@
-# Edit_screen
+# edit-screen
 
 A new Flutter project.
 
